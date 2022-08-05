@@ -6,7 +6,7 @@ Uses the [W3C Markup Validation Service](https://validator.w3.org/nu#textarea) t
 
 Run `Check HTML` to validate.
 
-> IMAGE
+> ![Example](https://raw.githubusercontent.com/Narlotl/html-validator/main/example.gif "Example"))
 
 ## Release Notes
 
