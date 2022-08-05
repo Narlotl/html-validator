@@ -2,7 +2,8 @@
   "name": "html-validator",
   "displayName": "HTML Checker",
   "description": "Checks HTML code using the W3C Markup Validation Service.",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "icon": "https://raw.githubusercontent.com/Narlotl/html-validator/main/icon.png",
   "engines": {
     "vscode": "^1.69.0"
   },
