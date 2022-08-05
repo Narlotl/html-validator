@@ -17,22 +17,21 @@ function activate(context) {
 		// The code you place here will be executed every time your command is executed
 
 		if (vscode.window.activeTextEditor) {
-			// @ts-ignore
+			if (vscode.window.activeTextEditor.document.languageId === 'html') {
+				vscode.window.setStatusBarMessage('Checking HTML...');
 
-			vscode.window.setStatusBarMessage('Checking HTML...');
-
-			function onreadystatechange() {
-				if (req.status == 200 && req.readyState == 4) {
-					const panel = vscode.window.createWebviewPanel(
-						'html-checker',
-						'HTML Checker results',
-						vscode.ViewColumn.Active,
-						{}
-					);
-					let data = [req.responseText];
-					data = data[0].substring(data[0].indexOf('<ol>') + 4, data[0].indexOf('</ol>')).split('</li>');
-					if (data.length > 1) {
-						panel.webview.html = `
+				function onreadystatechange() {
+					if (req.status == 200 && req.readyState == 4) {
+						const panel = vscode.window.createWebviewPanel(
+							'html-checker',
+							'HTML Checker results',
+							vscode.ViewColumn.Active,
+							{}
+						);
+						let data = [req.responseText];
+						data = data[0].substring(data[0].indexOf('<ol>') + 4, data[0].indexOf('</ol>')).split('</li>');
+						if (data.length > 1) {
+							panel.webview.html = `
 						<style>
 							.error strong {
 								background-color:rgb(255,100,100);
@@ -45,29 +44,32 @@ function activate(context) {
 						<ul>
 							<h1>HTML Checker results</h1>
 							<h2>` + (data.length - 1) + ' issues found</h2>';
-						data.pop();
-						data.forEach(error => {
-							panel.webview.html += error + '</li>';
-						});
-						panel.webview.html += '</ul>'
-						this.resolve();
+							data.pop();
+							data.forEach(error => {
+								panel.webview.html += error + '</li>';
+							});
+							panel.webview.html += '</ul>'
+							this.resolve();
+						}
+						else
+							panel.webview.html = '<h1>No errors found!</h1>';
 					}
-					else
-						panel.webview.html = '<h1>No errors found!</h1>';
-				}
-				else if (req.readyState == 4) {
-					vscode.window.showErrorMessage(req.statusText);
-					this.reject();
+					else if (req.readyState == 4) {
+						vscode.window.showErrorMessage(req.statusText);
+						this.reject();
+					}
+
+					vscode.window.setStatusBarMessage('');
 				}
 
-				vscode.window.setStatusBarMessage('');
+				const req = new XMLHttpRequest();
+				req.open('POST', 'https://validator.w3.org/nu/#textarea');
+				req.onreadystatechange = onreadystatechange;
+				req.setRequestHeader('Content-Type', 'text/html');
+				req.send(vscode.window.activeTextEditor.document.getText());
 			}
-
-			const req = new XMLHttpRequest();
-			req.open('POST', 'https://validator.w3.org/nu/#textarea');
-			req.onreadystatechange = onreadystatechange;
-			req.setRequestHeader('Content-Type', 'text/html');
-			req.send(vscode.window.activeTextEditor.document.getText());
+			else
+				vscode.window.showErrorMessage('Please open an HTML file');
 		}
 		else
 			vscode.window.showErrorMessage('No active text editor');
