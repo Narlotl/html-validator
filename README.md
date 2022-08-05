@@ -13,3 +13,7 @@ Run `Check HTML` to validate.
 ### 1.0.0
 
 Initial release of HTML Checker
+
+### 1.0.1
+
+Only allow HTML files
