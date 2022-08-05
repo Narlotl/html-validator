@@ -3,7 +3,7 @@
   "displayName": "HTML Checker",
   "description": "Checks HTML code using the W3C Markup Validation Service.",
   "version": "1.0.0",
-  "icon": "https://raw.githubusercontent.com/Narlotl/html-validator/main/icon.png",
+  "icon": "icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/Narlotl/html-validator"
