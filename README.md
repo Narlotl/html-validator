@@ -6,7 +6,7 @@ Uses the [W3C Markup Validation Service](https://validator.w3.org/nu#textarea) t
 
 Run `Check HTML` to validate.
 
-> ![Example](https://raw.githubusercontent.com/Narlotl/html-validator/main/example.gif "Example"))
+> ![Example](https://raw.githubusercontent.com/Narlotl/html-validator/main/example.gif "Example")
 
 ## Release Notes
 
@@ -17,3 +17,7 @@ Initial release of HTML Checker
 ### 1.0.1
 
 Only allow HTML files
+
+### 1.1.0
+
+Filter code from static site generators

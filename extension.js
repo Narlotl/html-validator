@@ -28,7 +28,7 @@ function activate(context) {
 							vscode.ViewColumn.Active,
 							{}
 						);
-						let data = [req.responseText];
+						let data = [req.responseText.replaceAll(/{%.*%}|{{.*}}/gm, '')];
 						data = data[0].substring(data[0].indexOf('<ol>') + 4, data[0].indexOf('</ol>')).split('</li>');
 						if (data.length > 1) {
 							panel.webview.html = `
