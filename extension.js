@@ -31,22 +31,28 @@ function activate(context) {
 						let data = [req.responseText.replaceAll(/{%.*%}|{{.*}}/gm, '')];
 						data = data[0].substring(data[0].indexOf('<ol>') + 4, data[0].indexOf('</ol>')).split('</li>');
 						if (data.length > 1) {
+							data.forEach(error => {
+								if (vscode.workspace.getConfiguration('html-validator').get('ignore').includes(error.split('').reduce((prevHash, currVal) =>
+									(((prevHash << 5) - prevHash) + currVal.charCodeAt(0)) | 0, 0)))
+									data.splice(data.indexOf(error), 1);
+							});
 							panel.webview.html = `
-						<style>
-							.error strong {
-								background-color:rgb(255,100,100);
-							}
-								
-							.warning strong {
-								background-color:rgb(250,151,58);
-							}
-						</style>
-						<ul>
+							<style>
+								.error strong {
+									background-color:rgb(255,100,100);
+								}
+									
+								.warning strong {
+									background-color:rgb(250,151,58);
+								}
+							</style>
+							<ul>
 							<h1>HTML Checker results</h1>
 							<h2>` + (data.length - 1) + ' issues found</h2>';
 							data.pop();
 							data.forEach(error => {
-								panel.webview.html += error + '</li>';
+								panel.webview.html += error + '<small><i>ID: ' + error.split('').reduce((prevHash, currVal) =>
+									(((prevHash << 5) - prevHash) + currVal.charCodeAt(0)) | 0, 0) + '</i></small></li>'
 							});
 							panel.webview.html += '</ul>'
 							this.resolve();
