@@ -4,8 +4,8 @@
 
 Uses the [W3C Markup Validation Service](https://validator.w3.org/nu#textarea) to check HTML for issues like extra closing tags or bad practice.
 
-Run `Check HTML` to validate.
-To ignore an error, copy its ID from the results tab and paste into the `html-validator.ignore` array in `settings.json`.
+Run ```Check HTML``` to validate.
+To ignore an error, copy its ID from the results tab and paste into the ```html-validator.ignore``` array in ```settings.json```.
 
 > ![Example](https://raw.githubusercontent.com/Narlotl/html-validator/main/example.gif "Example")
 
