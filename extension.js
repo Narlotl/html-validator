@@ -28,7 +28,7 @@ function activate(context) {
 							vscode.ViewColumn.Active,
 							{}
 						);
-						let data = [req.responseText.replaceAll(/{%.*%}|{{.*}}/gm, '')];
+						let data = [req.responseText];
 						data = data[0].substring(data[0].indexOf('<ol>') + 4, data[0].indexOf('</ol>')).split('</li>');
 						if (data.length > 1) {
 							data.forEach(error => {
@@ -72,7 +72,11 @@ function activate(context) {
 				req.open('POST', 'https://validator.w3.org/nu/#textarea');
 				req.onreadystatechange = onreadystatechange;
 				req.setRequestHeader('Content-Type', 'text/html');
-				req.send(vscode.window.activeTextEditor.document.getText());
+				let text = vscode.window.activeTextEditor.document.getText().replaceAll(/{%.*%}|{{.*}}/gm, '');
+				console.log(text.indexOf('---'))
+				if (text.indexOf('---') == 0)
+					text = text.replace(/---(.|\n)*---/gm, '');
+				req.send(text);
 			}
 			else
 				vscode.window.showErrorMessage('Please open an HTML file');

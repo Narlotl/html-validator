@@ -26,3 +26,7 @@ Filter code from static site generators.
 ### 1.2.0
 
 Allow ignoring of specific errors.
+
+### 1.2.1
+
+More static site generator filtering.
