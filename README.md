@@ -30,3 +30,8 @@ Allow ignoring of specific errors.
 ### 1.2.1
 
 More static site generator filtering.
+
+### 1.3.0
+
+Added key command and status bar item to run command.
+Press `alt+shift+c` to check HTML.

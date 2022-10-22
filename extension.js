@@ -73,7 +73,6 @@ function activate(context) {
 				req.onreadystatechange = onreadystatechange;
 				req.setRequestHeader('Content-Type', 'text/html');
 				let text = vscode.window.activeTextEditor.document.getText().replaceAll(/{%.*%}|{{.*}}/gm, '');
-				console.log(text.indexOf('---'))
 				if (text.indexOf('---') == 0)
 					text = text.replace(/---(.|\n)*---/gm, '');
 				req.send(text);
@@ -86,6 +85,12 @@ function activate(context) {
 	});
 
 	context.subscriptions.push(disposable);
+	const sb = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 1);
+	context.subscriptions.push(sb);
+	sb.text = '$(file-code) Check HTML';
+	sb.tooltip = 'Check HTML';
+	sb.command = 'html-validator.validate';
+	sb.show();
 }
 
 // this method is called when your extension is deactivated
