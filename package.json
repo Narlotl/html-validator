@@ -36,6 +36,12 @@
         "command": "html-validator.validate",
         "title": "Check HTML"
       }
+    ],
+    "keybindings": [
+      {
+        "command": "html-validator.validate",
+        "key": "alt+shift+c"
+      }
     ]
   },
   "scripts": {
