@@ -2,7 +2,7 @@
   "name": "html-validator",
   "displayName": "HTML Checker",
   "description": "Checks HTML code using the W3C Markup Validation Service.",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "author": "Narlotl",
   "publisher": "Narlotl",
   "icon": "icon.png",
@@ -27,7 +27,14 @@
         "html-validator.ignore": {
           "type": "array",
           "default": [],
-          "description": "Ignore the following errors/warnings. Copy the ID from the results tab and paste it here. (new line separated)"
+          "description": "Ignore the following errors/warnings. Copy the ID from the results tab and paste it here."
+        },
+        "html-validator.file-types": {
+          "type": "array",
+          "default": [
+            "html"
+          ],
+          "description": "File type associations for the extension to check."
         }
       }
     },

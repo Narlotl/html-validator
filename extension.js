@@ -17,7 +17,7 @@ function activate(context) {
 		// The code you place here will be executed every time your command is executed
 
 		if (vscode.window.activeTextEditor) {
-			if (vscode.window.activeTextEditor.document.languageId === 'html') {
+			if (vscode.workspace.getConfiguration('html-validator').get('file-types').includes(vscode.window.activeTextEditor.document.languageId)) {
 				vscode.window.setStatusBarMessage('Checking HTML...');
 
 				function onreadystatechange() {

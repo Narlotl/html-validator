@@ -25,7 +25,7 @@ Filter code from static site generators.
 
 ### 1.2.0
 
-Allow ignoring of specific errors.
+Allow ignoring of specific errors through settings.
 
 ### 1.2.1
 
@@ -35,3 +35,7 @@ More static site generator filtering.
 
 Added key command and status bar item to run command.
 Press `alt+shift+c` to check HTML.
+
+### 1.3.1
+
+Allow adding file associations other than HTML through settings.
