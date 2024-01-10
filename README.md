@@ -6,7 +6,7 @@ Uses the [Nu Html Checker](https://validator.github.io/validator/) to check HTML
 
 Run ```Check HTML``` to validate.
 
-> ![Example](example.gif "Example")
+> ![Example](https://raw.githubusercontent.com/Narlotl/html-validator/main/example.gif "Example")
 
 ## Requirements
 
