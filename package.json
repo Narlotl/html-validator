@@ -17,24 +17,26 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:html-validator.validate"
+    "onLanguage:html"
   ],
   "main": "./extension.js",
   "contributes": {
     "configuration": {
       "title": "HTML Checker",
       "properties": {
-        "html-validator.ignore": {
-          "type": "array",
-          "default": [],
-          "description": "Ignore the following errors/warnings. Copy the ID from the results tab and paste it here."
-        },
         "html-validator.file-types": {
+          "title": "File types",
           "type": "array",
           "default": [
             "html"
           ],
           "description": "File type associations for the extension to check."
+        },
+        "html-validator.validate-on-save": {
+          "title": "Validate on save",
+          "type": "boolean",
+          "default": true,
+          "description": "Check HTML on save."
         }
       }
     },
@@ -68,6 +70,6 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "xmlhttprequest": "^1.8.0"
+    "vnu-jar": "^23.4.11"
   }
 }
