@@ -19,7 +19,7 @@ const validate = /** @param {vscode.TextDocument} document @param {boolean} from
 			for (const err of data) {
 				if (err.type === 'error')
 					errorLevel = true;
-				diagnostics.push(new vscode.Diagnostic(new vscode.Range((err.firstLine || err.lastLine) - 1, err.firstColumn, err.lastLine - 1, err.lastColumn), err.message, err.type === 'error' ? vscode.DiagnosticSeverity.Error : vscode.DiagnosticSeverity.Warning));
+				diagnostics.push(new vscode.Diagnostic(new vscode.Range((err.firstLine || err.lastLine) - 1, err.firstColumn || err.lastColumn - err.hiliteLength, err.lastLine - 1, err.lastColumn), err.message, err.type === 'error' ? vscode.DiagnosticSeverity.Error : vscode.DiagnosticSeverity.Warning));
 			}
 			diagnosticCollection.set(document.uri, diagnostics);
 
