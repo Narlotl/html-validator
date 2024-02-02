@@ -2,7 +2,7 @@
   "name": "html-validator",
   "displayName": "HTML Checker",
   "description": "Checks HTML code using the W3C Markup Validation Service.",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "Narlotl",
   "publisher": "Narlotl",
   "icon": "icon.png",

@@ -14,6 +14,10 @@ HTML Checker requires [Java 8+](https://www.java.com/en/download/) as of v2.0.0.
 
 ## Release Notes
 
+### 2.0.2
+
+- Fixed [issue #1](https://github.com/Narlotl/html-validator/issues/1)
+
 ### 2.0.1
 
 - HTML Checker now uses the [GPL v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html) license.

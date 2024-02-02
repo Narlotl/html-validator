@@ -2,12 +2,11 @@ const vscode = require('vscode');
 const vnu = require('vnu-jar');
 const { execFile } = require('child_process');
 
-const workspaceConfig = vscode.workspace.getConfiguration('html-validator');
 const diagnosticCollection = vscode.languages.createDiagnosticCollection('html-validator');
 const validate = /** @param {vscode.TextDocument} document @param {boolean} fromSave */ (document, fromSave) => {
-	if (!workspaceConfig.get('validate-on-save') && fromSave)
+	if (!vscode.workspace.getConfiguration('html-validator').get('validate-on-save') && fromSave)
 		return;
-	if (workspaceConfig.get('file-types').includes(document.languageId)) {
+	if (vscode.workspace.getConfiguration('html-validator').get('file-types').includes(document.languageId)) {
 		vscode.window.setStatusBarMessage('Checking HTML...');
 
 		const process = execFile('java', ['-jar', '"' + vnu + '"', '--html', '--format json', '-'], { shell: true }, (error, stdout, stderr) => {
